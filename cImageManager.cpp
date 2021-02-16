@@ -59,7 +59,10 @@ cTexture* cImageManager::AddImage(string key, string path)
 
 cTexture* cImageManager::FindTexture(string key)
 {
-	return m_Images[key];
+	auto iter =  m_Images.find(key);
+	if (iter != m_Images.end())
+		return m_Images[key];
+	return nullptr;
 }
 
 void cImageManager::AddAnimation(string key)

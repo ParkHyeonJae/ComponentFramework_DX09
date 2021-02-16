@@ -1,6 +1,6 @@
 #pragma once
 
-template<typename T, class B = cFlowInitializeBase>
+template<typename T, class B = IFlowInitializeBase>
 class cSingleton
 {
 public:

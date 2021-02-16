@@ -7,7 +7,11 @@
 #include <algorithm>
 #include <string>
 #include <iostream>
-
+#include <type_traits>
+#include <bitset>
+#include <memory>
+#include <cassert>
+#include <omp.h>
 
 #include "SDKsound.h"
 #include "SDKwavefile.h"
@@ -48,13 +52,27 @@ using std::string;
 using std::map;
 using std::vector;
 using std::make_pair;
+using std::bitset;
+using std::list;
+using std::pair;
+using std::shared_ptr;
+using std::make_shared;
+using std::dynamic_pointer_cast;
+using std::static_pointer_cast;
+
 
 #include "cMath.h"
 using namespace Math;
 
+#include "cComponent.h"
+#include "cTransform.h"
+#include "cObject.h"
+#include "IFlowBase.h"
 
-#include "cFlowBase.h"
+
 #include "cSingleton.h"
+#include "cObjectManager.h"
 #include "cInputManager.h"
 #include "cCameraManager.h"
 #include "cImageManager.h"
+#include "cRenderer.h"

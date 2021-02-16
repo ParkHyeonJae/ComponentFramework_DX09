@@ -135,7 +135,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <OpenMPSupport>false</OpenMPSupport>
+      <OpenMPSupport>true</OpenMPSupport>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
@@ -385,15 +385,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cCameraManager.cpp" />
+    <ClCompile Include="cComponent.cpp" />
     <ClCompile Include="cInputManager.cpp" />
     <ClCompile Include="cObject.cpp" />
+    <ClCompile Include="cObjectManager.cpp" />
+    <ClCompile Include="cRenderer.cpp" />
+    <ClCompile Include="cTransform.cpp" />
     <ClCompile Include="EmptyProject.cpp" />
     <ClInclude Include="cCameraManager.h" />
+    <ClInclude Include="cComponent.h" />
     <ClInclude Include="cInputManager.h" />
     <ClInclude Include="cObject.h" />
+    <ClInclude Include="cObjectManager.h" />
+    <ClInclude Include="cRenderer.h" />
+    <ClInclude Include="cTransform.h" />
     <ClInclude Include="stdafx.h" />
     <None Include="DXUT\Optional\directx.ico" />
-    <ClInclude Include="cFlowBase.h" />
+    <ClInclude Include="IFlowBase.h" />
     <ClInclude Include="cImageManager.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMath.h" />

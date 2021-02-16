@@ -1,32 +1,30 @@
 #pragma once
 
-class cFlowInitializeBase abstract
+class IFlowInitializeBase abstract
 {
 	virtual void Init()		PURE;
 	virtual void Release()	PURE;
 };
 
-class cFlowContinousBase abstract
+class IFlowContinousBase abstract
 {
 public:
 	virtual void Update()	PURE;
 	virtual void Render()	PURE;
 };
 
-class cFlowBase : public cFlowInitializeBase, public cFlowContinousBase
+class IFlowBase : public IFlowInitializeBase, public IFlowContinousBase
 {
-public:
-	cFlowBase() = default;
 };
 
-class cFlowDeviceBase abstract
+class IFlowDeviceBase abstract
 {
 public:
 	virtual void OnLostDevice() PURE;
 	virtual void OnResetDevice() PURE;
 };
 
-class cFlowRenderDeviceBase : public cFlowDeviceBase
+class IFlowRenderDeviceBase : public IFlowDeviceBase
 {
 public:
 	virtual void OnBeginRender() PURE;

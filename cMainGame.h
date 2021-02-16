@@ -1,5 +1,5 @@
 #pragma once
-class cMainGame : public cFlowBase, public cFlowDeviceBase
+class cMainGame : public IFlowBase, public IFlowDeviceBase
 {
 public:
 	virtual void Init() override;

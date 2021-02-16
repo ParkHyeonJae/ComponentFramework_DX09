@@ -14,7 +14,7 @@ struct cRenderStructure
 
 	float Depth = 0;
 	Vector2 Pivot = VECTOR2_ZERO;
-	Color Color = 0x0fffffff;
+	Color Color = D3DCOLOR_ARGB(255, 255, 255, 255);
 
 	bool IsCameraView = false;
 
@@ -75,7 +75,7 @@ public:
 			part.Pivot = Pivot;
 			return this;
 		}
-		cRenderPartBuilder* SetColor(Color Color)
+		cRenderPartBuilder* SetColor(Color Color = D3DCOLOR_ARGB(255,255,255,255))
 		{
 			part.Color = Color;
 			return this;
@@ -98,9 +98,9 @@ private:
 };
 
 class cImageManager 
-	: public cSingleton<cImageManager, cFlowInitializeBase>
-	, public cFlowInitializeBase
-	, public cFlowRenderDeviceBase
+	: public cSingleton<cImageManager, IFlowInitializeBase>
+	, public IFlowInitializeBase
+	, public IFlowRenderDeviceBase
 {
 public:
 	// cFlowInitializeBase을(를) 통해 상속됨

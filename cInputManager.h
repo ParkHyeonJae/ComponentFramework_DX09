@@ -1,5 +1,5 @@
 #pragma once
-class cInputManager : public cSingleton<cInputManager>, public cFlowBase
+class cInputManager : public cSingleton<cInputManager>, public IFlowBase
 {
 public:
 	// cFlowBase을(를) 통해 상속됨

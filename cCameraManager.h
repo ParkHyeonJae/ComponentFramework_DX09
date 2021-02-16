@@ -1,5 +1,5 @@
 #pragma once
-class cCameraManager : public cSingleton<cCameraManager>, public cFlowBase
+class cCameraManager : public cSingleton<cCameraManager>, public IFlowBase
 {
 public:
 	// cFlowBase을(를) 통해 상속됨

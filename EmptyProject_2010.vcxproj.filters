@@ -79,13 +79,19 @@
     <ResourceCompile Include="EmptyProject.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
-    <ClInclude Include="cFlowBase.h" />
     <ClInclude Include="cImageManager.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cMath.h" />
     <ClInclude Include="cSingleton.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="cCameraManager.h" />
+    <ClInclude Include="cInputManager.h" />
+    <ClInclude Include="cObject.h" />
+    <ClInclude Include="cComponent.h" />
+    <ClInclude Include="IFlowBase.h" />
+    <ClInclude Include="cRenderer.h" />
+    <ClInclude Include="cTransform.h" />
+    <ClInclude Include="cObjectManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cImageManager.cpp" />
@@ -93,5 +99,11 @@
     <ClCompile Include="cMath.cpp" />
     <ClCompile Include="EmptyProject.cpp" />
     <ClCompile Include="cCameraManager.cpp" />
+    <ClCompile Include="cInputManager.cpp" />
+    <ClCompile Include="cObject.cpp" />
+    <ClCompile Include="cComponent.cpp" />
+    <ClCompile Include="cRenderer.cpp" />
+    <ClCompile Include="cTransform.cpp" />
+    <ClCompile Include="cObjectManager.cpp" />
   </ItemGroup>
 </Project>
