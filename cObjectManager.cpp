@@ -1,8 +1,14 @@
 #include "DXUT.h"
-#include "cObjectManager.h"
+#include "cObjectManager.hpp"
+
+void cObjectManager::PreInit()
+{
+    m_Objects.reserve(200);
+}
 
 void cObjectManager::Init()
 {
+    PreInit();
     for (int i = 0; i < m_Objects.size(); i += 1)
     {
         m_Objects[i]->Init();
@@ -33,6 +39,11 @@ void cObjectManager::Render()
     {
         m_Objects[i]->Render();
     }
+}
+
+void cObjectManager::ClearAllObject()
+{
+    m_Objects.clear();
 }
 
 shared_ptr<cObject> cObjectManager::Instantiate(shared_ptr<cObject> object)

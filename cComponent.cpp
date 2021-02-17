@@ -1,5 +1,5 @@
 #include "DXUT.h"
-#include "cComponent.h"
+#include "cComponent.hpp"
 
 void cComponent::Init()
 {

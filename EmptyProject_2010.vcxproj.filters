@@ -12,6 +12,42 @@
       <UniqueIdentifier>{2c3d4c8c-5d1a-459a-a05a-a4e4b608a44e}</UniqueIdentifier>
       <Extensions>fx;fxh;hlsl</Extensions>
     </Filter>
+    <Filter Include="Runtime">
+      <UniqueIdentifier>{faa5aeb7-f941-4696-8679-ea83db84b823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Managers">
+      <UniqueIdentifier>{264759e6-f313-471a-bfd2-f4bd7da7d7b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Components">
+      <UniqueIdentifier>{a2667716-7522-404e-a225-7c5ea2209dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\MainGame">
+      <UniqueIdentifier>{a9edb6e9-180c-46cc-ad82-ac7156dd8f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Utils">
+      <UniqueIdentifier>{99a15475-519c-4ba5-9d8a-2647d5fde9a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Objects">
+      <UniqueIdentifier>{abb3336e-8ae8-4cdf-ae0f-cf13a4cfa819}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Managers\Camera">
+      <UniqueIdentifier>{9251b2b4-c8e2-41db-b69e-8814751abfc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Managers\Image">
+      <UniqueIdentifier>{85d2d43d-2c26-46b4-86d0-759ebc93ef89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Managers\Input">
+      <UniqueIdentifier>{fc358179-13fe-4a8c-b85d-e25dee4860b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Managers\Object">
+      <UniqueIdentifier>{76c5dd2e-ca7f-4a95-99f0-bfb19c7877d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\Managers\Scene">
+      <UniqueIdentifier>{4d2f7580-df4d-4395-8521-95f5552a4c76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\MainGame\Scenes">
+      <UniqueIdentifier>{c6b44878-3928-460f-8938-d98bf187b403}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -79,31 +115,109 @@
     <ResourceCompile Include="EmptyProject.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
-    <ClInclude Include="cImageManager.h" />
-    <ClInclude Include="cMainGame.h" />
-    <ClInclude Include="cMath.h" />
-    <ClInclude Include="cSingleton.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="cCameraManager.h" />
-    <ClInclude Include="cInputManager.h" />
-    <ClInclude Include="cObject.h" />
-    <ClInclude Include="cComponent.h" />
-    <ClInclude Include="IFlowBase.h" />
-    <ClInclude Include="cRenderer.h" />
-    <ClInclude Include="cTransform.h" />
-    <ClInclude Include="cObjectManager.h" />
+    <ClInclude Include="stdafx.h">
+      <Filter>Runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="cUtils.hpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="IFlowBase.hpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="cSingleton.hpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="cPrintWrapper.hpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="cMath.hpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="cObject.hpp">
+      <Filter>Runtime\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="cSceneManager.hpp">
+      <Filter>Runtime\Managers\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="cScene.hpp">
+      <Filter>Runtime\Managers\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="cObjectManager.hpp">
+      <Filter>Runtime\Managers\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cInputManager.hpp">
+      <Filter>Runtime\Managers\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="cImageManager.hpp">
+      <Filter>Runtime\Managers\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="cCameraManager.hpp">
+      <Filter>Runtime\Managers\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="cMainGame.hpp">
+      <Filter>Runtime\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="cMainScene.hpp">
+      <Filter>Runtime\MainGame\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="cTransform.hpp">
+      <Filter>Runtime\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="cRenderer.hpp">
+      <Filter>Runtime\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="cComponent.hpp">
+      <Filter>Runtime\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cImageManager.cpp" />
-    <ClCompile Include="cMainGame.cpp" />
-    <ClCompile Include="cMath.cpp" />
-    <ClCompile Include="EmptyProject.cpp" />
-    <ClCompile Include="cCameraManager.cpp" />
-    <ClCompile Include="cInputManager.cpp" />
-    <ClCompile Include="cObject.cpp" />
-    <ClCompile Include="cComponent.cpp" />
-    <ClCompile Include="cRenderer.cpp" />
-    <ClCompile Include="cTransform.cpp" />
-    <ClCompile Include="cObjectManager.cpp" />
+    <ClCompile Include="EmptyProject.cpp">
+      <Filter>Runtime</Filter>
+    </ClCompile>
+    <ClCompile Include="cComponent.cpp">
+      <Filter>Runtime\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="cRenderer.cpp">
+      <Filter>Runtime\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="cTransform.cpp">
+      <Filter>Runtime\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="cMainGame.cpp">
+      <Filter>Runtime\MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="cMath.cpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="cObject.cpp">
+      <Filter>Runtime\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="cCameraManager.cpp">
+      <Filter>Runtime\Managers\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="cImageManager.cpp">
+      <Filter>Runtime\Managers\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="cInputManager.cpp">
+      <Filter>Runtime\Managers\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="cObjectManager.cpp">
+      <Filter>Runtime\Managers\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cSceneManager.cpp">
+      <Filter>Runtime\Managers\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="cScene.cpp">
+      <Filter>Runtime\Managers\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="cMainScene.cpp">
+      <Filter>Runtime\MainGame\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="cPrintWrapper.cpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="cUtils.cpp">
+      <Filter>Runtime\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

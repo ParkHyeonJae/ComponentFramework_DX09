@@ -13,5 +13,7 @@ public:
 	Vector2 position = VECTOR2_ZERO;
 	Vector2 scale = VECTOR2_ONE;
 	float angle = 0;
+
+	
 };
 

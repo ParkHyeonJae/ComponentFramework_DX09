@@ -7,7 +7,7 @@ struct cTexture
 
 struct cRenderStructure
 {
-	cTexture* Image = nullptr;
+	shared_ptr<cTexture> Image = nullptr;
 	Vector2 Position = VECTOR2_ZERO;
 	float RotateAngle = 0;
 	Vector2 Scale = VECTOR2_ZERO;
@@ -45,7 +45,7 @@ public:
 			return cRenderPart(part);
 		}
 
-		cRenderPartBuilder* SetImage(cTexture* _Image)
+		cRenderPartBuilder* SetImage(shared_ptr<cTexture> _Image)
 		{
 			part.Image = _Image;
 			return this;
@@ -118,16 +118,16 @@ public:
 
 	virtual void OnResetDevice() override;
 
-	map<string, cTexture*> m_Images;
-	map<string, vector<cTexture*>*>  m_Animations;
+	map<string, shared_ptr<cTexture>> m_Images;
+	map<string, vector<shared_ptr<cTexture>>*>  m_Animations;
 
 	LPD3DXSPRITE m_Sprite;
 	LPD3DXFONT m_Font;
 
-	cTexture* AddImage(string key, string path);
-	cTexture* FindTexture(string key);
+	shared_ptr<cTexture> AddImage(string key, string path);
+	shared_ptr<cTexture> FindTexture(string key);
 	void AddAnimation(string key);
-	vector<cTexture*>* FindAnimation(string key);
+	vector<shared_ptr<cTexture>>* FindAnimation(string key);
 
 	void Render(cRenderPart renderStruct);
 

@@ -10,18 +10,18 @@ public:
 
 	virtual void Render() override;
 
-	bool SetImage(string&& name);
-	bool SetImage(string&& name, string&& path);
-	constexpr bool IsExistTexture(cTexture * texture) const
+	bool SetSprite(string&& name);
+	bool SetSprite(string&& name, string&& path);
+	bool IsExistTexture(const shared_ptr<cTexture> texture) const
 	{
 		return texture != nullptr;
 	}
 
-	constexpr cTexture* GetTexture() const
+	shared_ptr<cTexture> GetTexture() const
 	{
 		return texture;
 	}
 private:
-	cTexture* texture = nullptr;
+	shared_ptr<cTexture> texture = nullptr;
 };
 

@@ -1,5 +1,5 @@
 #include "DXUT.h"
-#include "cImageManager.h"
+#include "cImageManager.hpp"
 
 void cImageManager::Init()
 {
@@ -12,7 +12,6 @@ void cImageManager::Release()
 	for (auto& iter : m_Images)
 	{
 		g_SAFE_RELEASE(iter.second->Image);
-		g_SAFE_DELETE(iter.second);
 	}
 	for (auto& iter : m_Animations)
 	{
@@ -45,9 +44,9 @@ void cImageManager::OnResetDevice()
 	m_Sprite->OnResetDevice();
 }
 
-cTexture* cImageManager::AddImage(string key, string path)
+shared_ptr<cTexture> cImageManager::AddImage(string key, string path)
 {
-	cTexture* Texture = new cTexture();
+	shared_ptr<cTexture> Texture = make_shared<cTexture>();
 	if (SUCCEEDED(D3DXCreateTextureFromFileExA(g_DEVICE, path.c_str(), D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2, 0, 0,
 		D3DFMT_UNKNOWN, D3DPOOL_MANAGED, D3DX_FILTER_POINT, D3DX_FILTER_POINT, 0, &Texture->Info, 0, &Texture->Image)))
 	{
@@ -57,7 +56,7 @@ cTexture* cImageManager::AddImage(string key, string path)
 	return nullptr;
 }
 
-cTexture* cImageManager::FindTexture(string key)
+shared_ptr<cTexture> cImageManager::FindTexture(string key)
 {
 	auto iter =  m_Images.find(key);
 	if (iter != m_Images.end())
@@ -68,7 +67,7 @@ cTexture* cImageManager::FindTexture(string key)
 void cImageManager::AddAnimation(string key)
 {
 	char Key[64];
-	vector<cTexture*>* AnimationFrame = new vector<cTexture*>();
+	vector<shared_ptr<cTexture>>* AnimationFrame = new vector<shared_ptr<cTexture>>();
 	for (int i = 1; true; i++)
 	{
 		sprintf(Key, "%s%d", key.c_str(), i);
@@ -83,7 +82,7 @@ void cImageManager::AddAnimation(string key)
 
 }
 
-vector<cTexture*>* cImageManager::FindAnimation(string key)
+vector<shared_ptr<cTexture>>* cImageManager::FindAnimation(string key)
 {
 	return m_Animations[key];
 }
@@ -94,7 +93,7 @@ void cImageManager::Render(cRenderPart renderStruct)
 	Vector2 Center = VECTOR2_ZERO;
 	cRenderStructure renderSt = renderStruct.GetPart();
 
-	cTexture* Texture = renderSt.Image;
+	shared_ptr<cTexture> Texture = renderSt.Image;
 	Vector2 Pivot = renderSt.Pivot;
 	Vector2 Scale = renderSt.Scale;
 	float Rot = renderSt.RotateAngle;

@@ -1,5 +1,5 @@
 #include "DXUT.h"
-#include "cRenderer.h"
+#include "cRenderer.hpp"
 
 void cRenderer::Init()
 {
@@ -11,7 +11,6 @@ void cRenderer::Release()
 
 void cRenderer::Update()
 {
-	//std::cout << GetOwner()->transform->name << " : 업데이트 중.." << std::endl;
 }
 
 void cRenderer::Render()
@@ -27,7 +26,7 @@ void cRenderer::Render()
 		->Build());
 }
 
-bool cRenderer::SetImage(string&& name, string&& path)
+bool cRenderer::SetSprite(string&& name, string&& path)
 {
 	texture = IMAGE->FindTexture(name);
 	if (IsExistTexture(texture))
@@ -35,7 +34,7 @@ bool cRenderer::SetImage(string&& name, string&& path)
 	return IsExistTexture((texture = IMAGE->AddImage(name, path)));
 }
 
-bool cRenderer::SetImage(string&& name)
+bool cRenderer::SetSprite(string&& name)
 {
 	texture = IMAGE->FindTexture(name);
 	return IsExistTexture(texture);

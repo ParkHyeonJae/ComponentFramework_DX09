@@ -1,5 +1,5 @@
 #include "DXUT.h"
-#include "cCameraManager.h"
+#include "cCameraManager.hpp"
 
 void cCameraManager::Init()
 {

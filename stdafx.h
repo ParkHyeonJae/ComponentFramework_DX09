@@ -48,7 +48,6 @@ using Vector2 = D3DXVECTOR2;
 using Matrix = D3DXMATRIX;
 using Color = D3DCOLOR;
 
-
 using std::string;
 using std::map;
 using std::vector;
@@ -63,18 +62,24 @@ using std::static_pointer_cast;
 
 
 
-#include "cMath.h"
+#include "cMath.hpp"
 using namespace Math;
 
-#include "cComponent.h"
-#include "cTransform.h"
-#include "cObject.h"
-#include "IFlowBase.h"
 
+#include "cUtils.hpp"
+#include "cComponent.hpp"
+#include "cTransform.hpp"
+#include "cObject.hpp"
+#include "IFlowBase.hpp"
 
-#include "cSingleton.h"
-#include "cObjectManager.h"
-#include "cInputManager.h"
-#include "cCameraManager.h"
-#include "cImageManager.h"
-#include "cRenderer.h"
+#include "cPrintWrapper.hpp"
+
+#include "cSingleton.hpp"
+#include "cScene.hpp"
+#include "cMainScene.hpp"
+#include "cSceneManager.hpp"
+#include "cObjectManager.hpp"
+#include "cInputManager.hpp"
+#include "cCameraManager.hpp"
+#include "cImageManager.hpp"
+#include "cRenderer.hpp"

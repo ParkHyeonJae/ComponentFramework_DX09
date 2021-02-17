@@ -1,5 +1,5 @@
 #include "DXUT.h"
-#include "cInputManager.h"
+#include "cInputManager.hpp"
 
 void cInputManager::Init()
 {
@@ -12,7 +12,7 @@ void cInputManager::Release()
 void cInputManager::Update()
 {
 	memcpy(m_Old, m_Cur, 128);
-	memcpy(m_Cur, false, 128);
+	memset(m_Cur, 0, 128);
 
 	for (int i = 0; i < 128; i++)
 	{

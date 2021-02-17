@@ -1,5 +1,5 @@
 #include "DXUT.h"
-#include "cMath.h"
+#include "cMath.hpp"
 
 int Math::Random(int min, int max)
 {

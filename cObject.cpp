@@ -1,5 +1,5 @@
 #include "DXUT.h"
-#include "cObject.h"
+#include "cObject.hpp"
 
 void cObject::Init()
 {
