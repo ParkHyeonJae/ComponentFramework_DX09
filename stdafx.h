@@ -11,6 +11,7 @@
 #include <bitset>
 #include <memory>
 #include <cassert>
+#include <random>
 #include <omp.h>
 
 #include "SDKsound.h"
@@ -59,6 +60,7 @@ using std::shared_ptr;
 using std::make_shared;
 using std::dynamic_pointer_cast;
 using std::static_pointer_cast;
+
 
 
 #include "cMath.h"

@@ -19,7 +19,7 @@ void cObjectManager::Release()
 
 void cObjectManager::Update()
 {
-    //#pragma omp parallel for
+    #pragma omp parallel for
     for (int i = 0; i < m_Objects.size(); i += 1)
     {
         m_Objects[i]->Update();

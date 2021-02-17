@@ -2,7 +2,8 @@
 namespace Math
 {
 	int Random(int min, int max);
-	float Random(float min, float max);
+	template<typename T = float>
+	float Random(T min, T max);
 	float Sign(float value);
 	float Clamp(float value, float min, float max);
 	Vector2 RotateVector2(Vector2 vector, float rot);

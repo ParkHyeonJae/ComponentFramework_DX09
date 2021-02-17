@@ -3,9 +3,13 @@
 
 int Math::Random(int min, int max)
 {
-    return min + (rand() | rand() << 16) % ((max - min) + 1);
+    std::random_device randomDevice;
+    std::mt19937 mt(randomDevice());
+    std::uniform_int_distribution<int> uid(min, max);
+    return uid(mt);
 }
-float Math::Random(float min, float max)
+template<typename T = float>
+float Math::Random(T min, T max)
 {
     return Random(static_cast<int>(min * 10000), static_cast<int>(max * 10000)) * 0.0001f;
 }
