@@ -21,7 +21,7 @@ public:
 	{
 		return texture;
 	}
-private:
+protected:
 	shared_ptr<cTexture> texture = nullptr;
 };
 

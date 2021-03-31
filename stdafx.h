@@ -59,7 +59,7 @@ using std::shared_ptr;
 using std::make_shared;
 using std::dynamic_pointer_cast;
 using std::static_pointer_cast;
-
+using std::function;
 
 
 #include "cMath.hpp"
@@ -74,6 +74,9 @@ using namespace Math;
 
 #include "cPrintWrapper.hpp"
 
+#include "cMoveable.hpp"
+#include "cGround.hpp"
+#include "cBoss.hpp"
 #include "cSingleton.hpp"
 #include "cScene.hpp"
 #include "cMainScene.hpp"
@@ -81,5 +84,7 @@ using namespace Math;
 #include "cObjectManager.hpp"
 #include "cInputManager.hpp"
 #include "cCameraManager.hpp"
+#include "cLineRenderer.hpp"
 #include "cImageManager.hpp"
 #include "cRenderer.hpp"
+#include "cRectRenderer.hpp"

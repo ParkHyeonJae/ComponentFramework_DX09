@@ -21,7 +21,8 @@ void cCameraManager::Update()
 	m_Mat = R * S * P;
 	D3DXMatrixInverse(&m_InversedMat, NULL, &m_Mat);
 
-	D3DXMatrixTransformation2D(&m_Mat, &Vector2(WIN_HALF.x, WIN_HALF.y), 0, &(VECTOR2_ONE * m_Scale), NULL, 0, &((m_Position * -1) + WIN_HALF));
+	Vector2 _offset = ((m_IsCenterOrigin) ? (m_Position * -1) + WIN_HALF : m_Position);
+	D3DXMatrixTransformation2D(&m_Mat, &Vector2(WIN_HALF.x, WIN_HALF.y), 0, &(VECTOR2_ONE * m_Scale), NULL, 0, &(_offset));
 }
 
 void cCameraManager::Render()

@@ -48,6 +48,9 @@
     <Filter Include="Runtime\MainGame\Scenes">
       <UniqueIdentifier>{c6b44878-3928-460f-8938-d98bf187b403}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Runtime\Components\Game">
+      <UniqueIdentifier>{83434526-030f-4ec1-96ec-3e498d4229b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -169,6 +172,21 @@
     <ClInclude Include="cComponent.hpp">
       <Filter>Runtime\Components</Filter>
     </ClInclude>
+    <ClInclude Include="cLineRenderer.hpp">
+      <Filter>Runtime\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="cMoveable.hpp">
+      <Filter>Runtime\Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="cGround.hpp">
+      <Filter>Runtime\Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="cBoss.hpp">
+      <Filter>Runtime\Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="cRectRenderer.hpp">
+      <Filter>Runtime\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EmptyProject.cpp">
@@ -218,6 +236,21 @@
     </ClCompile>
     <ClCompile Include="cUtils.cpp">
       <Filter>Runtime\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="cLineRenderer.cpp">
+      <Filter>Runtime\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="cMoveable.cpp">
+      <Filter>Runtime\Components\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="cGround.cpp">
+      <Filter>Runtime\Components\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="cBoss.cpp">
+      <Filter>Runtime\Components\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="cRectRenderer.cpp">
+      <Filter>Runtime\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

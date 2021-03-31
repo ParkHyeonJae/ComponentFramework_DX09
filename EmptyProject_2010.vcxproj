@@ -147,10 +147,11 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>DXUT.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalOptions> %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>d3dx10d.lib;d3dx9d.lib;dxerr.lib;dxguid.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;d3dx10d.lib;d3dx9d.lib;dxerr.lib;dxguid.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <LargeAddressAware>true</LargeAddressAware>
@@ -384,26 +385,36 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cBoss.cpp" />
     <ClCompile Include="cCameraManager.cpp" />
     <ClCompile Include="cComponent.cpp" />
+    <ClCompile Include="cGround.cpp" />
     <ClCompile Include="cInputManager.cpp" />
+    <ClCompile Include="cLineRenderer.cpp" />
     <ClCompile Include="cMainScene.cpp" />
+    <ClCompile Include="cMoveable.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectManager.cpp" />
     <ClCompile Include="cPrintWrapper.cpp" />
+    <ClCompile Include="cRectRenderer.cpp" />
     <ClCompile Include="cRenderer.cpp" />
     <ClCompile Include="cScene.cpp" />
     <ClCompile Include="cSceneManager.cpp" />
     <ClCompile Include="cTransform.cpp" />
     <ClCompile Include="cUtils.cpp" />
     <ClCompile Include="EmptyProject.cpp" />
+    <ClInclude Include="cBoss.hpp" />
     <ClInclude Include="cCameraManager.hpp" />
     <ClInclude Include="cComponent.hpp" />
+    <ClInclude Include="cGround.hpp" />
     <ClInclude Include="cInputManager.hpp" />
+    <ClInclude Include="cLineRenderer.hpp" />
     <ClInclude Include="cMainScene.hpp" />
+    <ClInclude Include="cMoveable.hpp" />
     <ClInclude Include="cObject.hpp" />
     <ClInclude Include="cObjectManager.hpp" />
     <ClInclude Include="cPrintWrapper.hpp" />
+    <ClInclude Include="cRectRenderer.hpp" />
     <ClInclude Include="cRenderer.hpp" />
     <ClInclude Include="cScene.hpp" />
     <ClInclude Include="cSceneManager.hpp" />

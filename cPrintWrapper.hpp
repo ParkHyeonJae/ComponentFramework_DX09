@@ -7,33 +7,59 @@ class cPrintWrapper
 protected:
 
 	template<typename T>
-	class IPrintWrappper abstract
+	class IPrintWrapper abstract
 	{
 	public:
-		IPrintWrappper(shared_ptr<T> pObject) : pObject(pObject) {}
+		IPrintWrapper(T _Object) : Object(_Object) {}
 
-		shared_ptr<T> GetElement() const
+
+		T GetElement() const
+		{
+			return Object;
+		}
+
+	private:
+		T Object;
+	};
+
+	template<typename T>
+	class IPrintPointerWrappper abstract
+	{
+	public:
+		IPrintPointerWrappper(shared_ptr<T> pObject) : pObject(pObject) {}
+
+		shared_ptr<T> GetElementPtr() const
 		{
 			return pObject;
 		}
+
+
 	private:
 		shared_ptr<T> pObject;
 	};
 public:
-	class cTransformPrint : public IPrintWrappper<cTransform>
+	class cTransformPrint : public IPrintPointerWrappper<cTransform>
 	{
 	public:
-		cTransformPrint(shared_ptr<cTransform> transform) : IPrintWrappper(transform) {}
+		cTransformPrint(shared_ptr<cTransform> transform) : IPrintPointerWrappper(transform) {}
 		void PrintTransform(const shared_ptr<cTransform> transfrom) const;
 		friend std::ostream& operator<<(std::ostream& lhs, const cPrintWrapper::cTransformPrint& rhs);
 	};
 
-	class cTexturePrint : public IPrintWrappper<cTexture>
+	class cTexturePrint : public IPrintPointerWrappper<cTexture>
 	{
 	public:
-		cTexturePrint(shared_ptr<cTexture> texture) : IPrintWrappper(texture) {}
+		cTexturePrint(shared_ptr<cTexture> texture) : IPrintPointerWrappper(texture) {}
 		void PrintTexture(const shared_ptr<cTexture> ths) const;
 		friend std::ostream& operator<<(std::ostream& lhs, const cPrintWrapper::cTexturePrint& rhs);
+	};
+
+	class cVector2Print : public IPrintWrapper<Vector2>
+	{
+	public:
+		cVector2Print(Vector2 vector2) : IPrintWrapper(vector2) {}
+		void PrintVector2(const Vector2 vector2) const;
+		friend std::ostream& operator<<(std::ostream& lhs, const cPrintWrapper::cVector2Print rhs);
 	};
 
 };

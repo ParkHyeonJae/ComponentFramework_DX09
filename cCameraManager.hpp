@@ -13,6 +13,11 @@ public:
 		return m_Mat;
 	}
 
+	void SetCenterOrigin(bool centerOrigin)
+	{
+		m_IsCenterOrigin = centerOrigin;
+	}
+
 private:
 	Vector2 WIN_HALF;
 
@@ -23,6 +28,7 @@ private:
 	Matrix m_Mat;
 	Matrix m_InversedMat;
 
+	bool m_IsCenterOrigin;
 	
 };
 #define CAMERA cCameraManager::GetInstance()

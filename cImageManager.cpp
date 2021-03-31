@@ -117,3 +117,34 @@ void cImageManager::Render(cRenderPart renderStruct)
 	m_Sprite->SetTransform(&Mat);
 	m_Sprite->Draw(Texture->Image, nullptr, nullptr, nullptr, Color);
 }
+
+void cImageManager::RectRender(cRenderPart renderStruct)
+{
+	Matrix Mat;
+	Vector2 Center = VECTOR2_ZERO;
+	cRenderStructure renderSt = renderStruct.GetPart();
+
+	shared_ptr<cTexture> Texture = renderSt.Image;
+	Vector2 Pivot = renderSt.Pivot;
+	Vector2 Scale = renderSt.Scale;
+	float Rot = renderSt.RotateAngle;
+	float Depth = renderSt.Depth;
+
+	Vector2 Position = renderSt.Position;
+	bool IsView = renderSt.IsCameraView;
+
+	Color Color = renderSt.Color;
+
+	RECT Rect = renderSt.Rect;
+
+	if (Pivot != VECTOR2_ZERO)
+		Center = renderStruct.CalcuatePivotToCenter(Pivot);
+	D3DXMatrixTransformation2D(&Mat, &Center, 0, &Scale, &Center, Rot, &(Position - Center));
+
+	if (IsView)
+		Mat *= CAMERA->GetViewMatrix();
+
+	Mat._43 = Depth;
+	m_Sprite->SetTransform(&Mat);
+	m_Sprite->Draw(Texture->Image, &Rect, nullptr, nullptr, Color);
+}

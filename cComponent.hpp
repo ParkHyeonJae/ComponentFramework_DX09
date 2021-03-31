@@ -16,9 +16,14 @@ public:
 
 	virtual void Render();
 
-	bool IsEnable()
+	bool IsEnable() const
 	{
 		return m_IsEnable;
+	}
+
+	void SetEnable(bool condition)
+	{
+		m_IsEnable = condition;
 	}
 
 	void SetOwner(cObject* owner)

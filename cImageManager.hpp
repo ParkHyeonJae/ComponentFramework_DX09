@@ -130,6 +130,7 @@ public:
 	vector<shared_ptr<cTexture>>* FindAnimation(string key);
 
 	void Render(cRenderPart renderStruct);
+	void RectRender(cRenderPart renderStruct);
 
 };
 #define IMAGE cImageManager::GetInstance()
