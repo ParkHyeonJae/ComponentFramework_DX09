@@ -154,120 +154,6 @@ void cMainScene::Init()
 			std::cout << "distanceXY = " << distanceXY.x << " : " << distanceXY.y << "\n";
 			std::cout << "xy = " << x << " : " << y << "\n";
 
-#pragma region TEST
-
-
-
-
-			// UP, LEFT, DOWN, RIGHT
-			//FLOAT startDirX[(int)cMoveable::MoveDirection::COUNT] = { 0, 1, 0, -1 };
-			//FLOAT startDirY[(int)cMoveable::MoveDirection::COUNT] = { 1, 0, -1, 0 };
-
-			//FLOAT endDirX[(int)cMoveable::MoveDirection::COUNT] = { x, 0, x, 0 };
-			//FLOAT endDirY[(int)cMoveable::MoveDirection::COUNT] = { 0, -y, 0, y };
-
-
-
-			int dirX = 0;
-			int dirY = 0;
-			switch (startDir)
-			{
-			case cMoveable::MoveDirection::UP:
-				if (endDir == cMoveable::MoveDirection::LEFT) {
-					dirX = 1;
-					dirY = y;
-				}
-
-				if (endDir == cMoveable::MoveDirection::RIGHT) {
-					dirX = -1;
-					dirY = y;
-				}
-
-				if (endDir == cMoveable::MoveDirection::UP) {
-					dirX = x;
-					dirY = 1;
-				}
-
-				if (endDir == cMoveable::MoveDirection::DOWN) {
-					dirX = x;
-					dirY = -1;
-				}
-
-				break;
-			case cMoveable::MoveDirection::LEFT:
-				if (endDir == cMoveable::MoveDirection::LEFT) {
-					dirX = 1;
-					dirY = y;
-				}
-
-				if (endDir == cMoveable::MoveDirection::RIGHT) {
-					dirX = -1;
-					dirY = y;
-				}
-
-				if (endDir == cMoveable::MoveDirection::UP) {
-					dirX = x;
-					dirY = 1;
-				}
-
-				if (endDir == cMoveable::MoveDirection::DOWN) {
-					dirX = x;
-					dirY = -1;
-				}
-				break;
-			case cMoveable::MoveDirection::DOWN:
-				if (endDir == cMoveable::MoveDirection::LEFT) {
-					dirX = 1;
-					dirY = y;
-				}
-
-				if (endDir == cMoveable::MoveDirection::RIGHT) {
-					dirX = -1;
-					dirY = y;
-				}
-
-				if (endDir == cMoveable::MoveDirection::UP) {
-					dirX = x;
-					dirY = 1;
-				}
-
-				if (endDir == cMoveable::MoveDirection::DOWN) {
-					dirX = x;
-					dirY = -1;
-				}
-				break;
-			case cMoveable::MoveDirection::RIGHT:
-				if (endDir == cMoveable::MoveDirection::LEFT) {
-					dirX = 1;
-					dirY = y;
-				}
-
-				if (endDir == cMoveable::MoveDirection::RIGHT) {
-					dirX = -1;
-					dirY = y;
-				}
-
-				if (endDir == cMoveable::MoveDirection::UP) {
-					dirX = x;
-					dirY = 1;
-				}
-
-				if (endDir == cMoveable::MoveDirection::DOWN) {
-					dirX = x;
-					dirY = -1;
-				}
-				break;
-			default:
-				break;
-			}
-
-
-			//std::cout << "startDirX[(int)startDir] : " << startDirX[(int)startDir] << "\n";
-			//std::cout << "startDirY[(int)startDir] : " << startDirY[(int)startDir] << "\n";
-
-			//std::cout << "endDirX[(int)endDir] : " << endDirX[(int)endDir] << "\n";
-			//std::cout << "endDirY[(int)endDir] : " << endDirY[(int)endDir] << "\n";
-#pragma endregion
 			Vector2 sideCheckVec[] = {
 				Vector2(-1, 0),
 				Vector2(1,	0),
@@ -282,15 +168,21 @@ void cMainScene::Init()
 			auto sideIndexSize = sizeof(sideCheckVec) / sizeof(Vector2);
 
 			for (decltype(sideIndexSize) i = 0; i < sideIndexSize; i++) {
-				decltype(curIndex.x) x;
-				decltype(curIndex.y) y;
+				auto containVector = ground->FindElementInVector<Vector2>(ground->GetRemainGround(), Vector2(curIndex.y, curIndex.x),
+					[](Vector2 t1, Vector2 t2) -> bool
+					{
+						return (static_cast<int>(t1.x) == static_cast<int>(t2.x))
+							&& (static_cast<int>(t1.y) == static_cast<int>(t2.y));
+					});
 
-				auto condition = ground->IsContainInRemainGround(
-					x = (curIndex.x + sideCheckVec[i].x)
-					, y = (curIndex.y + sideCheckVec[i].y));
-				if (condition)
-					continue;
-				ground->FLOOD_FILL(x, y);
+				for (auto& vec : containVector)
+				{
+					if (ground->GetGround(vec.y, vec.x) != (int)cGround::EGroundType::EMPTY)
+						continue;
+					cPrintWrapper::cVector2Print printVec = vec;
+					std::cout << "Print Result : " << printVec << "\n";
+				}
+				ground->FLOOD_FILL(containVector[0].x, containVector[0].y);
 			}
 
 			//ground->FLOOD_FILL(curIndex.y + dirY, curIndex.x + dirX);
