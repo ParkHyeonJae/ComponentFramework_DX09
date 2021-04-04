@@ -3,9 +3,13 @@ class cRectRenderer;
 class cGround : public cComponent
 {
 public:
-	struct Node
+	class Node
 	{
-		int data;
+	public:
+		Node() = default;
+		~Node() { cell.reset(); }
+
+		int data = 0;
 		shared_ptr<cObject> cell;
 	};
 
@@ -29,14 +33,14 @@ public:
 
 	Vector2 GetUnitPerWinSize() const
 	{
-		return Vector2(WINSIZE_X / MAX, WINSIZE_Y / MAX);
+		return Vector2(WINSIZE_X / MAX.x, WINSIZE_Y / MAX.y);
 	}
 
 	Vector2 ConvertLocalPosToIndexUnit(Vector2 pos)
 	{
 		Vector2 curIndex;
-		curIndex.x = MAX - ((WINSIZE_X - pos.x) / GetUnitPerWinSize().x);
-		curIndex.y = MAX - ((WINSIZE_Y - pos.y) / GetUnitPerWinSize().y);
+		curIndex.x = MAX.x - ((WINSIZE_X - pos.x) / GetUnitPerWinSize().x);
+		curIndex.y = MAX.y - ((WINSIZE_Y - pos.y) / GetUnitPerWinSize().y);
 
 		return curIndex;
 	}
@@ -46,7 +50,7 @@ public:
 		return Vector2(indexUnit.x * GetUnitPerWinSize().x, indexUnit.y * GetUnitPerWinSize().y);
 	}
 
-	int GetGroundMaxSize() const
+	Vector2 GetGroundMaxSize() const
 	{
 		return MAX;
 	}
@@ -54,9 +58,9 @@ public:
 	void SetGroundMap(int y, int x, int val);
 
 
-	bool IsOutOfMapRange(int y, int x)
+	bool IsOutOfMapRange(const int y, const int x) const
 	{
-		if (x < 0 || x > MAX || y < 0 || y > MAX)
+		if (x < 0 || x > MAX.x || y < 0 || y > MAX.y)
 			return true;
 		return false;
 	}
@@ -79,12 +83,14 @@ public:
 
 	void Visited(int y, int x);
 	void FLOOD_FILL(int y, int x);
+	void RenewGroundData();
+	bool SearchBoss_FLOOD_FILL(int y, int x);
 
 	void PrintGround()
 	{
-		for (size_t y = 0; y < MAX; y++)
+		for (size_t y = 0; y < MAX.y; y++)
 		{
-			for (size_t x = 0; x < MAX; x++)
+			for (size_t x = 0; x < MAX.x; x++)
 			{
 				std::cout << m_Ground[y][x].data;
 			}
@@ -99,67 +105,37 @@ public:
 		return m_Ground[y][x].data;
 	}
 
-	vector<Vector2> GetRemainGround()
+	vector<Vector2> GetRemainGround() const
 	{
 		return m_RemainGround;
 	}
 
 	template<typename T>
-	const vector<T> FindElementInVector(const vector<T>& indexs, T& val, function<bool(T, T)> predicate)
-	{
-		vector<T> newVector;
-		newVector.reserve(indexs.size());
+	const vector<T> FindElementInVector(const vector<T>& indexs, const T& val
+		, const function<const bool(const T&, const T&)> predicate);
+	void EraseRemainGround(int y, int x);
 
-		for (auto& vec : indexs)
-		{
-			if (predicate(vec, val)) {
-				newVector.emplace_back(vec);
-			}
-		}
-		return newVector;
-	}
-	void EraseRemainGround(int y, int x)
-	{
-		for (auto& remainPos : m_RemainGround)
-		{
-			if (remainPos.y != y || remainPos.x != x)
-				return;
-		}
-		auto iter = std::find(m_RemainGround.begin()
-			, m_RemainGround.end(), Vector2(y, x));
-		if (iter == m_RemainGround.end())
-			return;
-
-		m_RemainGround.erase(iter);
-	}
-
-	bool IsContainInRemainGround(int y, int x)
-	{
-		auto containVector = FindElementInVector<Vector2>(m_RemainGround, Vector2(y, x),
-			[](Vector2 t1, Vector2 t2) -> bool
-			{
-				return (static_cast<int>(t1.x) == static_cast<int>(t2.x)) 
-					&& (static_cast<int>(t1.y) == static_cast<int>(t2.y));
-			});
-
-		for (auto& vec : containVector)
-		{
-			if (GetGround(vec.y, vec.x) != (int)cGround::EGroundType::EMPTY)
-				continue;
-			cPrintWrapper::cVector2Print printVec = vec;
-			std::cout << printVec << "\n";
-		}
-
-		//auto iter = std::find(m_RemainGround.begin()
-		//	, m_RemainGround.end(), Vector2(y, x));
-		//if (iter == m_RemainGround.end())
-		//	return false;
-
-		return true;
-	}
+	const bool IsContainInRemainGround(const int y, const int x);
 
 private:
-	const int MAX = 20;
+	Vector2 MAX = Vector2(20, 20);
 	vector<Vector2> m_RemainGround;
+	Node** m_findGround;
 	Node** m_Ground;
 };
+
+template<typename T>
+inline const vector<T> cGround::FindElementInVector(const vector<T>& indexs
+	, const T& val, const function<const bool(const T&, const T&)> predicate)
+{
+	vector<T> newVector;
+	newVector.reserve(indexs.size());
+
+	for (auto& vec : indexs)
+	{
+		if (predicate(vec, val)) {
+			newVector.emplace_back(vec);
+		}
+	}
+	return newVector;
+}

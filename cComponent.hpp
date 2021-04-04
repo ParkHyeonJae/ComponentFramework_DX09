@@ -5,7 +5,8 @@ class cComponent
 {
 public:
 	cComponent() {}
-	virtual ~cComponent() {}
+	virtual ~cComponent() {
+	}
 
 
 	virtual void Init();
@@ -37,13 +38,13 @@ public:
 	}
 
 	template<typename T>
-	T* AddComponent()
+	shared_ptr<T> AddComponent()
 	{
 		return m_Owner->AddComponent<T>();
 	}
 
 	template<typename T>
-	T* GetComponent()
+	shared_ptr<T> GetComponent()
 	{
 		return m_Owner->GetComponent<T>();
 	}

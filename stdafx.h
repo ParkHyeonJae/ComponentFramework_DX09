@@ -13,6 +13,7 @@
 #include <cassert>
 #include <random>
 #include <omp.h>
+#include <crtdbg.h>
 
 #include "SDKsound.h"
 #include "SDKwavefile.h"
@@ -25,6 +26,11 @@
 #else
 #pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
 #endif
+
+//#ifdef _DEBUG
+//#define new new(_CLIENT_BLOCK, __FILE__, __LINE__)
+//#define malloc(s) _malloc_dbg(s, _NORMAL_BLOCK, __FILE__, __LINE__)
+//#endif
 
 #define g_DEVICE DXUTGetD3D9Device()
 #define g_DeltaTime DXUTGetElapsedTime()

@@ -25,6 +25,11 @@ public:
 		return m_Pos;
 	}
 
+	Vector2 GetPrevPos() const
+	{
+		return m_PrevPos;
+	}
+
 	void SetPos(Vector2 pos)
 	{
 		m_Pos = pos;
@@ -67,6 +72,7 @@ public:
 	}
 private:
 	bool m_bIsMoveable = true;
+	Vector2 m_PrevPos;
 	Vector2 m_Pos;
 	Vector2 m_MoveOffset = VECTOR2_ZERO;
 	shared_ptr<cTransform> m_MoveOwnerTransform;

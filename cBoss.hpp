@@ -10,5 +10,18 @@ public:
 
 	virtual void Render() override;
 
+	Vector2 GetBossPos() const
+	{
+		return m_BossPos;
+	}
+
+	void SetGround(shared_ptr<cGround> ground)
+	{
+		m_Ground = ground;
+	}
+
+private:
+	Vector2 m_BossPos;
+	shared_ptr<cGround> m_Ground;
 };
 

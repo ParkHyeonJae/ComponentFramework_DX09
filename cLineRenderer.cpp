@@ -10,7 +10,7 @@ void cLineRenderer::Init()
 void cLineRenderer::Release()
 {
 	//if (m_vertexList)
-	//	delete[] m_vertexList;
+	//	delete m_vertexList;
 		
 	if (m_Line)
 		SAFE_RELEASE(m_Line);

@@ -13,10 +13,10 @@ void cBoss::Release()
 
 void cBoss::Update()
 {
-
+	
 }
 
 void cBoss::Render()
 {
-
+	
 }

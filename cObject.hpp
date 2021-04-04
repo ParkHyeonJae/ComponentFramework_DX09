@@ -27,7 +27,9 @@ public:
 
 		transform = AddComponent<cTransform>();
 	}
-	virtual ~cObject() {}
+	virtual ~cObject() {
+		
+	}
 
 
 	template<class T = cComponent>
